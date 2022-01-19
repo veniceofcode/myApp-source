@@ -1,0 +1,10 @@
+FROM quay.io/marrober/maven-build:latest
+
+USER 1001 
+
+COPY src/main/liberty/config/server.xml /home/maven/target
+COPY pom.xml .
+COPY /src /home/maven/src
+
+RUN ls && mvn --batch-mode package && ls /home/maven/target
+
